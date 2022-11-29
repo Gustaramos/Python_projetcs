@@ -1,12 +1,10 @@
-url = 'bytbank.comz/cambio?moedaOrigem=real'
+url = 'https://bytbank.com/cambio?moedaOrigem=real'
+print(url.find('?'))
 print(url)
 
-url_base = url[0:19]
-
+indice_interrogacao = url.find('?')
+url_base = url[0:indice_interrogacao]
 print(url_base)
 
-url_parametros = url[20:36]
-
+url_parametros = url[indice_interrogacao+1:]
 print(url_parametros)
-
-print(url)
