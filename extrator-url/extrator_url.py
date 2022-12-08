@@ -4,11 +4,16 @@ class ExtratorURL:
         self.valida_url()
 
     def sanitizacao_url(self, url):
-        return url.strip()
+        if type(url) == str:
+            return url.strip()
+        else:
+            return ''
 
     def valida_url(self):
-        if self.url == '':
-            raise ValueError('A  URL esta vazia')
+        if not self.url:
+            raise ValueError('A URL esta vazia')
+        if not self.url.startswith('https') or not self.get_url_base().endswith('/cambio'):
+            raise ValueError('A URL não é válida')
 
     def get_url_base(self):
         indice_interrogacao = self.url.find('?')
@@ -30,8 +35,11 @@ class ExtratorURL:
             valor = self.get_url_parametros()[indice_do_valor:indice_e_comercial]
         return valor
 
-#extrator_url = ExtratorURL(' ')
-
+#extrator_url = ExtratorURL(None)
 extrator_url = ExtratorURL('https://bytbank.com/cambio?moedaDestino=dolar&quantidade=100&moedaOrigem=real')
+
+#extrator_url = ExtratorURL('//bytbank.com/cambio?moedaDestino=dolar&quantidade=100&moedaOrigem=real')
+#extrator_url = ExtratorURL('https://bytbank.com?moedaDestino=dolar&quantidade=100&moedaOrigem=real')
+
 valor_quantidade = extrator_url.get_valor_parametro('quantidade')
 print(valor_quantidade)
