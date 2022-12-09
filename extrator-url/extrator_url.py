@@ -70,6 +70,6 @@ if moeda_origem == 'dolar' and moeda_destino == 'real':
 elif moeda_origem == 'real' and moeda_destino == 'dolar':
     quantidade = int(quantidade)
     valor_conversao = quantidade * valor_dolar
-    print(f'O valor da sua conversão de U${quantidade} dolares, fica no total de R${valor_conversao:.2f}')
+    print(f'O valor da sua conversão de U${quantidade} dolares, fica no total de R${valor_conversao:.2f} reais')
 else:
     print('Não foi possivel realizar a sua conversão!')
