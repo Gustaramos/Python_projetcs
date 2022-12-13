@@ -2,8 +2,13 @@ import pandas as pd
 import openpyxl
 #from twilio.rest import Client
 
+<<<<<<< Updated upstream
 #account_sid = 'AXXXXXXXXXXXXXXXXXXX'
 #auth_token = 'XXXXXXXXXXXXXXXXXXXXXX'
+=======
+account_sid = 'co'
+auth_token = 'XXXXXXXXXXXXXXXXXXXXXX'
+>>>>>>> Stashed changes
 
 #client = Client(account_sid, auth_token)
 
