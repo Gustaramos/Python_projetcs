@@ -4,6 +4,7 @@
     <inspection_tool class="PyPep8Inspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
       <option name="ignoredErrors">
         <list>
+<<<<<<< Updated upstream
           <option value="E305" />
           <option value="E262" />
           <option value="E261" />
@@ -34,6 +35,10 @@
           <option value="venda_projeto.C" />
           <option value="pandas.utils" />
           <option value="teste.confirma_saque" />
+=======
+          <option value="E265" />
+          <option value="E501" />
+>>>>>>> Stashed changes
         </list>
       </option>
     </inspection_tool>
