@@ -36,14 +36,10 @@ class ExtratorURL:
         indice_e_comercial = self.get_url_parametros().find('&', indice_do_valor)
 
         if indice_e_comercial == -1:
-            valor = self.get_url_parametros[indice_do_valor:]
+            valor = self.get_url_parametros()[indice_do_valor:]
         else:
             valor = self.get_url_parametros()[indice_do_valor:indice_e_comercial]
         return valor
-
-    #def get_conversao_moeda(self, parametro_busca):
-        #conversao = self.get_url_parametros(parametro_busca)
-        #return conversao
 
     def __len__(self):
         return len(self.url)
@@ -57,16 +53,23 @@ class ExtratorURL:
 
 url = 'https://bytebank.com/cambio?quantidade=100&moedaDestino=dolar&moedaOrigem=real'
 extrator_url = ExtratorURL(url)
-#moeda_origem = extrator_url.get_valor_parametro("moedaOrigem")
-#print(moeda_origem)
-#VALOR_DOLAR = 5.50  # 1 dólar = 5.50 reais
-#extrator_url2 = ExtratorURL(url)
-#print(f'O tamanho da url é {len(extrator_url)}')
-#print(id(extrator_url))
-#print(id(extrator_url2))
-#moeda_destino = extrator_url.get_valor_parametro("moedaDestino")
-quantidade = extrator_url.get_valor_parametro("moedaOrigem")
-print(quantidade)
-#extrator_url = ExtratorURL(None)
-#extrator_url = ExtratorURL('//bytbank.com/cambio?moedaDestino=dolar&quantidade=100&moedaOrigem=real')
-#extrator_url = ExtratorURL('https://bytbank.com?moedaDestino=dolar&quantidade=100&moedaOrigem=real')
+
+
+valor_dolar = 5.50  # 1 dólar = 5.50 reais
+moeda_destino = extrator_url.get_valor_parametro("moedaDestino")
+moeda_origem = extrator_url.get_valor_parametro("moedaOrigem")
+quantidade = extrator_url.get_valor_parametro("quantidade")
+
+
+# Se a moeda destino for igual a dolar, retornar o calculo = valor_em_dolar / valor_em_real
+
+if moeda_origem == 'dolar' and moeda_destino == 'real':
+    quantidade = int(quantidade)
+    valor_conversao = quantidade / valor_dolar
+    print(f'O valor da sua conversão de R${quantidade} reais, fica no total de U${valor_conversao:.2f} dolares')
+elif moeda_origem == 'real' and moeda_destino == 'dolar':
+    quantidade = int(quantidade)
+    valor_conversao = quantidade * valor_dolar
+    print(f'O valor da sua conversão de U${quantidade} dolares, fica no total de R${valor_conversao:.2f} reais')
+else:
+    print('Não foi possivel realizar a sua conversão!')
